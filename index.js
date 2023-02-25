@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const app = express();
 
-//middleware -> function that can be used for handling request and response objects
+//middleware -> function that are used between request and response objects
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
@@ -109,11 +109,11 @@ app.post("/api/persons", (req, res) => {
 });
 
 //
-// delclare after routes so it doesn't use them
+// invoke after routes so it only works if is no valid request
 app.use(unknownEndpoint);
 //
 const PORT = process.env.PORT || 3001;
-
+console.log(process.env.PORT);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
